@@ -18,7 +18,7 @@ RegisterCommand('e!', function(_, argList)
     if emote ~= nil then
         TriggerEvent("ree-emotes:playNow", emote)
     else
-        TriggerEvent("chatMessage", "~r~Unrecognized emote:" .. emote or argList[1])
+        TriggerEvent("chatMessage", "~r~Unrecognized emote:" .. (emote or argList[1]))
     end
 end)
 

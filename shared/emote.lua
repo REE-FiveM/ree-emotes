@@ -9,8 +9,14 @@ function Emote.Play(emoteName, now)
     local ped   = GetPlayerPed(PlayerId())
     local emote = FindEmoteByNameOrAlias(emoteName)
 
-    -- remove their weapon and stop previous animation
-    REE.Lib.Anim.PedStopEmote(ped, now)
+    -- remove their weapon
+    if now then
+        Emote.StopNow(ped)
+    else
+        Emote.Stop(ped)
+    end
+
+    -- stop previous animation
     Emote.RemoveWeapon(ped)
 
     -- start the scenario

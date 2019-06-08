@@ -18,5 +18,5 @@ AddEventHandler("ree-emotes:play",
                 function(emoteName) Emote.Play(emoteName) end)
 
 AddEventHandler("ree-emotes:playNow",
-                function(emoteName) Emote.Play(emoteName) end)
+                function(emoteName) Emote.PlayNow(emoteName) end)
 
