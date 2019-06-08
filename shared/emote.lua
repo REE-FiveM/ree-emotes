@@ -1,42 +1,24 @@
---
--- construct Emote
---
-Emote = { isPlaying = false }
+-- :: REE Emotes
+--  : Constructs the plugin Emote table
 
-function Emote.RemoveWeapon(ped)
-    if IsPedArmed(ped, 7) then
-        -- If the player is holding weapon, remove it
-        SetCurrentPedWeapon(ped, GetHashKey('WEAPON_UNARMED'), true)
-    end
-end
+Emote = { }
 
-function Emote.Stop(ped)
-    ClearPedTasks(ped)
-end
-
-function Emote.StopNow(ped)
-    ClearPedTasksImmediately(ped)
-end
+function Emote.RemoveWeapon(ped) REE.Lib.Entity.PedRemoveHeldWeapon(ped) end
 
 function Emote.Play(emoteName, now)
-    local ped = GetPlayerPed(PlayerId())
+    local ped   = GetPlayerPed(PlayerId())
+    local emote = FindEmoteByNameOrAlias(emoteName)
 
-    if Emote.isPlaying == true then
-        if now then
-            Emote.StopNow(ped)
-        else
-            Emote.Stop(ped)
-        end
-    end
-
-    -- make sure to remove their weapon
+    -- remove their weapon and stop previous animation
+    REE.Lib.Anim.PedStopEmote(ped, now)
     Emote.RemoveWeapon(ped)
-    Emote.isPlaying = true
 
     -- start the scenario
-    TaskStartScenarioInPlace(ped, REEData.Emotes[emoteName], 0, true)
+    REE.Lib.Anim.PedPlayEmote(ped, emote, now)
 end
 
-function Emote.PlayNow(emoteName)
-    Emote.Play(emoteName, true)
-end
+function Emote.Stop(ped) REE.Lib.Anim.PedStopEmote(ped) end
+
+function Emote.StopNow(ped) REE.Lib.Anim.PedStopEmote(ped, true) end
+
+function Emote.PlayNow(emoteName) Emote.Play(emoteName, true) end

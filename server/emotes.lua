@@ -1,3 +1,7 @@
+-- :: REE Emotes
+--  : Server script for the plugin
+--
+
 -- print loading messages
 Citizen.CreateThread(function()
     function logMsg(msg) Citizen.Trace("[ree-emotes] " .. msg .. "\n") end
@@ -10,10 +14,10 @@ Citizen.CreateThread(function()
     logMsg("Starting plugin...")
 
     -- wait for REE instance to load
-    while REEData == nil do Citizen.Wait(25) end
+    while REE == nil do Citizen.Wait(25) end
 
     -- count the emotes and aliases
-    local emoteCount = tableSize(REEData.Emotes)
+    local emoteCount = tableSize(REE.Data.Emotes)
     local aliasCount = tableSize(EmoteAliases)
 
     -- notify we're done

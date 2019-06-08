@@ -6,6 +6,7 @@ client_scripts {
     'shared/_globals.lua',
     'shared/aliases.lua',
     'shared/emote.lua',
+    'shared/functions.lua',
 
     'client/events.lua',
     'client/commands.lua',
@@ -15,6 +16,7 @@ server_scripts {
     'shared/_globals.lua',
     'shared/aliases.lua',
     'shared/emote.lua',
+    'shared/functions.lua',
 
     'server/emotes.lua',
 }

@@ -4,21 +4,21 @@
 
 -- /e :: play an emote
 RegisterCommand('e', function(_, argList)
-    local emote = GetEmoteAlias(argList[1])
-    if REEData.Emotes[emote] ~= nil then
+    local emote = FindEmoteByNameOrAlias(argList[1])
+    if emote ~= nil then
         TriggerEvent("ree-emotes:play", emote)
     else
-        TriggerEvent("chatMessage", "~r~Unrecognized emote: " .. emote or "(not provided)")
+        TriggerEvent("chatMessage", "~r~Unrecognized emote: " .. (emote or argList[1]))
     end
 end)
 
 -- /e! :: play an emote immediately
 RegisterCommand('e!', function(_, argList)
-    local emote = GetEmoteAlias(argList[1])
-    if REEData.Emotes[emote] ~= nil then
+    local emote = FindEmoteByNameOrAlias(argList[1])
+    if emote ~= nil then
         TriggerEvent("ree-emotes:playNow", emote)
     else
-        TriggerEvent("chatMessage", "~r~Unrecognized emote:" .. emote or "(not provided)")
+        TriggerEvent("chatMessage", "~r~Unrecognized emote:" .. emote or argList[1])
     end
 end)
 

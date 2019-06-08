@@ -1,3 +1,7 @@
+-- :: REE Emotes
+--  : Generates a list of aliases for players to use emotes easier
+--
+
 EmoteAliases        = {}
 local _EmoteAliases = {
     BINOCULARS              = { "binoculars", "peep" },
@@ -43,6 +47,7 @@ local _EmoteAliases = {
     HIGH_CLASS_PROSTITUTE   = { "classy_hoe", "prostitute", "prostitute1", "hoe", "hoe1" },
     LOW_CLASS_PROSTITUTE    = { "trashy_hoe", "prostitute2", "hoe2" },
     NOTEPAD                 = { "notepad", "note" },
+    PUSH_UPS                = { "pushups", "pushup" },
 }
 
 -- iterate through the aliases and save them in a table
@@ -52,5 +57,5 @@ for emoteKey, aliases in pairs(_EmoteAliases) do
     end
 end
 
--- resolving the user alias to a native emote name
-function GetEmoteAlias(alias) return EmoteAliases[alias] end
+-- clean up and let this be GC'd
+_EmoteAliases = nil

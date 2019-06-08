@@ -2,10 +2,10 @@
 --  : Allows players to play and stop emotes
 --
 
-REEData = nil
+REE = nil
 
 -- load REE instance data
 Citizen.CreateThread(function()
-    TriggerEvent("ree:getInstance", function(_REE) REEData = _REE.Data end)
-    while REEData == nil do Citizen.Wait(50) end
+    TriggerEvent("ree:getInstance", function(_REE) REE = _REE end)
+    while REE == nil do Citizen.Wait(50) end
 end)
