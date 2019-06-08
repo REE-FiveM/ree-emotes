@@ -1,20 +1,3 @@
--- :: REE Emotes - Globals
---  : Allows players to play and stop emotes
---
-
---
--- load REE instance data
---
-REE = nil
-Citizen.CreateThread(function()
-    TriggerEvent("ree:getInstance", function(_REE) REE = _REE end)
-
-    while REE == nil do
-        Citizen.Wait(50)
-    end
-end)
-
-
 --
 -- construct Emote
 --
@@ -51,7 +34,7 @@ function Emote.Play(emoteName, now)
     Emote.isPlaying = true
 
     -- start the scenario
-    TaskStartScenarioInPlace(ped, REE.Data.Emotes[emoteName], 0, true)
+    TaskStartScenarioInPlace(ped, REEData.Emotes[emoteName], 0, true)
 end
 
 function Emote.PlayNow(emoteName)
