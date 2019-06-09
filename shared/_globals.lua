@@ -5,7 +5,5 @@
 REE = nil
 
 -- load REE instance data
-Citizen.CreateThread(function()
-    TriggerEvent("ree:getInstance", function(_REE) REE = _REE end)
-    while REE == nil do Citizen.Wait(50) end
-end)
+TriggerEvent("ree:getInstance", function(_REE) REE = _REE end)
+while REE == nil do Citizen.Wait(25) end
